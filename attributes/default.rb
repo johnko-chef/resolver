@@ -16,6 +16,12 @@
 # limitations under the License.
 #
 
+default['resolver']['rootgroup']    = case node['platform_family']
+                                     when 'freebsd'
+                                       'wheel'
+                                     else
+                                       'root'
+                                     end
 
 default['resolver']['search'] = node['domain']
 default['resolver']['nameservers'] = []

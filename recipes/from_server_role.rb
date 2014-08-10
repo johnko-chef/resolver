@@ -31,11 +31,7 @@ end
 template "/etc/resolv.conf" do
   source "resolv.conf.erb"
   owner "root"
-  if platform?("freebsd")
-    group 0
-  else
-    group "root"
-  end
+  group node['resolver']['rootgroup']
   mode 0644
   variables(
     'search' => node['resolver']['search'],

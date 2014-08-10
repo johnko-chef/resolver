@@ -27,11 +27,7 @@ else
   template "/etc/resolv.conf" do
     source "resolv.conf.erb"
     owner "root"
-    if platform?("freebsd")
-      group 0
-    else
-      group "root"
-    end
+    group node['resolver']['rootgroup']
     mode 0644
     # This syntax makes the resolver sub-keys available directly
     variables node['resolver']
